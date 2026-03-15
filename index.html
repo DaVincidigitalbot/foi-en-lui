@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foi en Lui — Faith in Him | Faith-Based Clothing</title>
+    <meta name="description" content="Foi en Lui — Faith in Him. Premium faith-based clothing with Bible verses. Hoodies, t-shirts, and sweatshirts for teens, men, and women.">
+    <meta property="og:title" content="Foi en Lui — Faith in Him">
+    <meta property="og:description" content="Premium faith-based clothing with Bible verses.">
+    <meta property="og:image" content="logo.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --navy: #1a1a2e;
+            --gold: #C9A84C;
+            --cream: #F5F0E8;
+            --white: #FFFFFF;
+            --gray: #888888;
+            --light-gray: #f8f7f4;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--navy);
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--navy);
+            z-index: 100;
+            padding: 0 20px;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .nav-logo {
+            height: 55px;
+            border-radius: 4px;
+        }
+        .nav-brand {
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-left: 12px;
+        }
+        .nav-brand span { color: var(--gold); }
+        .nav-left { display: flex; align-items: center; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .mobile-menu { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 6px;
+            margin-bottom: 8px;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+        .hero p {
+            color: rgba(255,255,255,0.6);
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        .hero-btn {
+            display: inline-block;
+            padding: 16px 50px;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: all 0.3s;
+        }
+        .hero-btn:hover { background: var(--white); }
+
+        /* Section Headers */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .section-header .line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+        .section-header p {
+            color: var(--gray);
+            font-size: 15px;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .category-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--navy);
+            display: flex;
+            align-items: flex-end;
+            transition: transform 0.3s;
+        }
+        .category-card:hover { transform: translateY(-5px); }
+        .category-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 30px;
+            background: linear-gradient(transparent, rgba(26,26,46,0.95));
+        }
+        .category-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .category-card p {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .category-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            font-size: 80px;
+            opacity: 0.15;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        .product-img {
+            height: 350px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .product-img .verse-preview {
+            text-align: center;
+            padding: 20px;
+        }
+        .product-img .verse-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--navy);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .product-img .verse-ref {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .product-info .product-type {
+            color: var(--gray);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .product-info .price {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Verse Banner */
+        .verse-banner {
+            background: var(--navy);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .verse-banner .verse {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-style: italic;
+            color: var(--white);
+            max-width: 700px;
+            margin: 0 auto 15px;
+            line-height: 1.5;
+        }
+        .verse-banner .ref {
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        .about-img {
+            height: 500px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        .about-img img {
+            height: 300px;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.5);
+            padding: 60px 20px 30px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .footer-brand span { color: var(--gold); }
+        footer h4 {
+            color: var(--white);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        footer a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: var(--cream);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .newsletter h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .newsletter p { color: var(--gray); margin-bottom: 20px; font-weight: 300; }
+        .newsletter-form {
+            display: flex;
+            max-width: 450px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .newsletter-form button {
+            padding: 14px 30px;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .newsletter-form button:hover { background: var(--gold); color: var(--navy); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .nav-links.active { 
+                display: flex; flex-direction: column; position: absolute;
+                top: 70px; left: 0; right: 0; background: var(--navy);
+                padding: 20px; gap: 20px;
+            }
+            .hero h1 { font-size: 36px; letter-spacing: 3px; }
+            .hero .subtitle { font-size: 18px; }
+            .categories { grid-template-columns: 1fr; }
+            .category-card { height: 300px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .section-header h2 { font-size: 28px; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-left">
+            <img src="logo.jpg" alt="Foi en Lui" class="nav-logo">
+            <span class="nav-brand">FOI EN <span>LUI</span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#shop">SHOP</a></li>
+            <li><a href="#women">WOMEN</a></li>
+            <li><a href="#men">MEN</a></li>
+            <li><a href="#teens">TEENS</a></li>
+            <li><a href="#about">ABOUT</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <img src="logo.jpg" alt="Foi en Lui" class="hero-logo">
+        <h1>FOI EN <span>LUI</span></h1>
+        <p class="subtitle">Faith in Him</p>
+        <p>Wear your faith. Premium clothing designed to inspire, uplift, and remind you of His promises every day.</p>
+        <a href="#shop" class="hero-btn">SHOP THE COLLECTION</a>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section" id="shop">
+    <div class="section-header">
+        <h2>COLLECTIONS</h2>
+        <div class="line"></div>
+        <p>Faith-inspired apparel for every season of life</p>
+    </div>
+    <div class="categories">
+        <div class="category-card" onclick="scrollTo('#women')">
+            <span class="category-icon">&#10013;</span>
+            <div class="overlay">
+                <h3>WOMEN</h3>
+                <p>SHOP WOMEN'S COLLECTION</p>
+            </div>
+        </div>
+        <div class="category-card" onclick="scrollTo('#men')">
+            <span class="category-icon">&#9769;</span>
+            <div class="overlay">
+                <h3>MEN</h3>
+                <p>SHOP MEN'S COLLECTION</p>
+            </div>
+        </div>
+        <div class="category-card" onclick="scrollTo('#teens')">
+            <span class="category-icon">&#10029;</span>
+            <div class="overlay">
+                <h3>TEENS</h3>
+                <p>SHOP TEEN COLLECTION</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Verse Banner -->
+<div class="verse-banner">
+    <p class="verse">"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."</p>
+    <p class="ref">JEREMIAH 29:11</p>
+</div>
+
+<!-- Women's Collection -->
+<section class="section" id="women">
+    <div class="section-header">
+        <h2>WOMEN'S COLLECTION</h2>
+        <div class="line"></div>
+        <p>Strength, grace, and faith — beautifully designed</p>
+    </div>
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-img" style="background:#E8D5D5;">
+                <span class="product-badge">NEW</span>
+                <div class="verse-preview">
+                    <p class="verse-text">"She is clothed with strength and dignity"</p>
+                    <p class="verse-ref">Proverbs 31:25</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Strength & Dignity</h4>
+                <p class="product-type">Dusty Rose Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#1a1a2e;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"For I know the plans I have for you"</p>
+                    <p class="verse-ref">Jeremiah 29:11</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>The Plan</h4>
+                <p class="product-type">Navy Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#F5F0E8;">
+                <div class="verse-preview">
+                    <p class="verse-text">"Be still and know that I am God"</p>
+                    <p class="verse-ref">Psalm 46:10</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Be Still</h4>
+                <p class="product-type">Cream Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#8B7D7B;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"Let your light shine before others"</p>
+                    <p class="verse-ref">Matthew 5:16</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Shine</h4>
+                <p class="product-type">Mauve Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Verse Banner 2 -->
+<div class="verse-banner">
+    <p class="verse">"I can do all things through Christ who strengthens me."</p>
+    <p class="ref">PHILIPPIANS 4:13</p>
+</div>
+
+<!-- Men's Collection -->
+<section class="section" id="men">
+    <div class="section-header">
+        <h2>MEN'S COLLECTION</h2>
+        <div class="line"></div>
+        <p>Bold faith. Quiet strength. Built for men who lead.</p>
+    </div>
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-img" style="background:#1a1a2e;">
+                <span class="product-badge">BESTSELLER</span>
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"I can do all things through Christ who strengthens me"</p>
+                    <p class="verse-ref">Philippians 4:13</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>All Things</h4>
+                <p class="product-type">Black Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#2D3748;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"Be strong and courageous. Do not be afraid."</p>
+                    <p class="verse-ref">Joshua 1:9</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Courage</h4>
+                <p class="product-type">Charcoal Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#4A5032;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"The Lord is my shepherd, I shall not want"</p>
+                    <p class="verse-ref">Psalm 23:1</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>The Shepherd</h4>
+                <p class="product-type">Military Green Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#37474F;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"No weapon formed against you shall prosper"</p>
+                    <p class="verse-ref">Isaiah 54:17</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>No Weapon</h4>
+                <p class="product-type">Storm Blue Hoodie</p>
+                <p class="price">$54.99</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Teens Collection -->
+<section class="section" id="teens">
+    <div class="section-header">
+        <h2>TEEN COLLECTION</h2>
+        <div class="line"></div>
+        <p>Faith is bold. So are you.</p>
+    </div>
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-img" style="background:#2D3748;">
+                <span class="product-badge">NEW</span>
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"Faith does not make things easy. It makes them possible."</p>
+                    <p class="verse-ref">Luke 1:37</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Possible</h4>
+                <p class="product-type">Slate Hoodie</p>
+                <p class="price">$49.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#1a1a2e;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"Trust in the Lord with all your heart"</p>
+                    <p class="verse-ref">Proverbs 3:5</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Trust</h4>
+                <p class="product-type">Black Hoodie</p>
+                <p class="price">$49.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#E8D5D5;">
+                <div class="verse-preview">
+                    <p class="verse-text">"Let your light shine before others"</p>
+                    <p class="verse-ref">Matthew 5:16</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Shine</h4>
+                <p class="product-type">Dusty Rose Tee</p>
+                <p class="price">$29.99</p>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-img" style="background:#4A5032;">
+                <div class="verse-preview">
+                    <p class="verse-text" style="color:#fff;">"Be strong and courageous"</p>
+                    <p class="verse-ref">Joshua 1:9</p>
+                </div>
+            </div>
+            <div class="product-info">
+                <h4>Courage Tee</h4>
+                <p class="product-type">Military Green Tee</p>
+                <p class="price">$29.99</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<div class="newsletter">
+    <h3>Join the Foi en Lui Family</h3>
+    <p>Get early access to new drops, exclusive verses, and 10% off your first order.</p>
+    <div class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button>SUBSCRIBE</button>
+    </div>
+</div>
+
+<!-- About -->
+<section class="section" id="about">
+    <div class="about-grid">
+        <div class="about-text">
+            <h3>Our Story</h3>
+            <p><strong>Foi en Lui</strong> — French for <em>"Faith in Him"</em> — was born from a simple belief: your clothing can be a daily reminder of God's promises.</p>
+            <p>Every piece in our collection carries a Bible verse — not just as decoration, but as a declaration. When you put on a Foi en Lui hoodie, you're wrapping yourself in truth.</p>
+            <p>We believe faith should be worn boldly. Not shouted, but shown. In the quality of what we make, in the verses we carry, and in the way we treat every person who wears our name.</p>
+            <p style="color:var(--gold); font-style:italic; font-family:'Cormorant Garamond', serif; font-size:18px; margin-top:20px;">"Wear your faith. Live your faith. Share your faith."</p>
+        </div>
+        <div class="about-img">
+            <img src="logo.jpg" alt="Foi en Lui">
+        </div>
+    </div>
+</section>
+
+<!-- Verse Banner 3 -->
+<div class="verse-banner">
+    <p class="verse">"Be still and know that I am God."</p>
+    <p class="ref">PSALM 46:10</p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <p class="footer-brand">FOI EN <span>LUI</span></p>
+            <p style="margin-top:10px; line-height:1.8; font-size:13px;">Faith in Him. Premium faith-based clothing designed to inspire and uplift.</p>
+        </div>
+        <div>
+            <h4>SHOP</h4>
+            <a href="#women">Women</a>
+            <a href="#men">Men</a>
+            <a href="#teens">Teens</a>
+            <a href="#">New Arrivals</a>
+        </div>
+        <div>
+            <h4>COMPANY</h4>
+            <a href="#about">Our Story</a>
+            <a href="#">Contact</a>
+            <a href="#">Shipping & Returns</a>
+            <a href="#">Size Guide</a>
+        </div>
+        <div>
+            <h4>FOLLOW US</h4>
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">Facebook</a>
+            <a href="#">Pinterest</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Foi en Lui. All rights reserved. | Faith in Him</p>
+    </div>
+</footer>
+
+<script>
+function scrollTo(selector) {
+    document.querySelector(selector).scrollIntoView({behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
